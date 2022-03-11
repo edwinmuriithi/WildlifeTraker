@@ -27,9 +27,25 @@ public class App {
 
         //RANGERS
         //navigate to ranger creation form
-        get("/create/ranger",(request, response) -> {
+        get("/ranger/new",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();
             return new ModelAndView(model,"ranger_form.hbs");
         },new HandlebarsTemplateEngine());
+
+
+        //Animals
+        //navigate to animal creation form
+        get("/animal/new",(request, response) -> {
+            Map<String,Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model,"animal_form.hbs");
+        },new HandlebarsTemplateEngine());
+
+        //navigate to Sighting form
+        get("/sighting/new",(request, response) -> {
+            Map<String,Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model,"sighting_form.hbs");
+        },new HandlebarsTemplateEngine());
+
+
 
     }}
