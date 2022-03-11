@@ -24,4 +24,12 @@ public class App {
             Map<String,Object> model = new HashMap<String, Object>();
             return new ModelAndView(model,"index.hbs");
         },new HandlebarsTemplateEngine());
-}}
+
+        //RANGERS
+        //navigate to ranger creation form
+        get("/create/ranger",(request, response) -> {
+            Map<String,Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model,"ranger_form.hbs");
+        },new HandlebarsTemplateEngine());
+
+    }}
