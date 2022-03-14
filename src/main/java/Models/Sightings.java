@@ -7,7 +7,7 @@ import org.sql2o.*;
 import java.util.List;
 
 
-public class Sighting implements DatabaseManagement {
+public class Sightings implements DatabaseManagement {
 
     private int id;
     private int animal_id;
@@ -17,7 +17,7 @@ public class Sighting implements DatabaseManagement {
 
     // constructor for sighting which implements abstract method save in Database management class
 
-    public Sighting(int animal_id, String location, String ranger_name) {
+    public Sightings(int animal_id, String location, String ranger_name) {
         if (ranger_name.equals("")) {
             throw new IllegalArgumentException("Please enter Ranger name.");
         }
@@ -74,43 +74,43 @@ public class Sighting implements DatabaseManagement {
     }
 
     //Listing all sightings from  sightings table
-    public static List<Sighting> all() {
+    public static List<Sightings> all() {
         String sql = "SELECT * FROM sightings ORDER BY timestamp DESC;";
 
         try (Connection con = Db.sql2o.open()) {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)
-                    .executeAndFetch(Sighting.class);
+                    .executeAndFetch(Sightings.class);
         }
     }
 
     //Listing sighting by animal id
-    public static List<Sighting> allByAnimal(int animalId) {
+    public static List<Sightings> allByAnimal(int animalId) {
         try(Connection con = Db.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE animal_id = :animalId ORDER BY timestamp DESC";
             return con.createQuery(sql)
                     .addParameter("animalId", animalId)
-                    .executeAndFetch(Sighting.class);
+                    .executeAndFetch(Sightings.class);
         }
     }
 
     //Overriding sighting
     public boolean equals(Object otherSighting){
-        if(!(otherSighting instanceof Sighting)){
+        if(!(otherSighting instanceof Sightings)){
             return false;
         }else{
-            Sighting newSighting = (Sighting) otherSighting;
+            Sightings newSighting = (Sightings) otherSighting;
             return this.getAnimalId()==newSighting.getAnimalId() && this.getRangerName().equals(newSighting.getRangerName());
         }
     }
 
     // finding a sighting using its id && with unchecked exception  that ensures index number entered by the user is within the range of the array.
-    public static Sighting find(int id) {
+    public static Sightings find(int id) {
         try(Connection con = Db.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE id=:id;";
-            Sighting sighting = con.createQuery(sql)
+            Sightings sighting = con.createQuery(sql)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(Sighting.class);
+                    .executeAndFetchFirst(Sightings.class);
             return sighting;
         } catch (IndexOutOfBoundsException exception) {
             return null;
