@@ -40,6 +40,13 @@ public class App {
             return new ModelAndView(model,"animal_form.hbs");
         },new HandlebarsTemplateEngine());
 
+        //Endangered Animals
+        //navigate to endangered animal creation form
+        get("/endangered/new",(request, response) -> {
+            Map<String,Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model,"endangered.hbs");
+        },new HandlebarsTemplateEngine());
+
         //navigate to Sighting form
         get("/sighting/new",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();

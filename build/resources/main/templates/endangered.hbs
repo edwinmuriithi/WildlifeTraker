@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <title>Record Sighting</title>
+    <title>Add Endangered Animal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,7 +23,7 @@
             <div class="col-lg-10">
                 <div class="wrapper">
                     <div class="contact-wrap w-100 p-md-5 p-4 py-5">
-                        <h3 class="mb-4">Record Sighting</h3>
+                        <h3 class="mb-4">Add Endangered Animal</h3>
                         <div id="form-message-warning" class="mb-4"></div>
                         <div id="form-message-success" class="mb-4">
 
@@ -32,23 +32,25 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Animal">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <select id="location" name="location" type="text" class="form-control transparentInputFields">
-                                            <option value="Sector 1">Sector 1</option>
-                                            <option value="Sector 2">Sector 2</option>
-                                            <option value="Sector 3">Sector 3</option>
-                                            <option value="Sector 4">Sector 4</option>
-                                            <option value="Sector 5">Sector 5</option>
+                                        <select id="health" name="health" type="text" class="form-control">
+                                            <option value="Healthy">Healthy</option>
+                                            <option value="Okay">Okay</option>
+                                            <option value="Ill">Ill</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="rangerName" value="Ranger Name" class="form-control transparentInputFields">
+                                        <select id="age" name="age" type="text" class="form-control transparentInputFields">
+                                            <option value="Newborn">Newborn</option>
+                                            <option value="Young">Young</option>
+                                            <option value="Adult">Adult</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -56,7 +58,7 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="submit" value="Record Sighting" class="btn btn-primary">
+                                        <input type="submit" value="Add Animal" class="btn btn-primary">
                                         <div class="submitting"></div>
                                     </div>
                                 </div>
