@@ -1,4 +1,5 @@
 import Models.Animal;
+import Models.Sightings;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -35,7 +36,7 @@ public class App {
             return new ModelAndView(model,"animal_form.hbs");
         },new HandlebarsTemplateEngine());
 
-        // posting animals form details
+        // Posting animals form details
         post("/animal/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String name = request.queryParams("name");
@@ -45,7 +46,6 @@ public class App {
             } catch (IllegalArgumentException exception) {
                 System.out.println("Please enter an animal name.");
             }
-//            response.redirect("/animals");
             return new ModelAndView(model,"animal_form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -75,33 +75,26 @@ public class App {
         //View all Sightings
         get("/view/sightings",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
-            model.put("animals",Animal.all());
+            model.put("sightings", Sightings.all());
+            model.put("Animal", Animal.class);
             return new ModelAndView(model,"sighting_view.hbs");
         },new HandlebarsTemplateEngine());
 
 
+        //Post Sightings form details
+        post("/sighting/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int animal_id = Integer.parseInt(request.queryParams("animal"));
+            String location = request.queryParams("location");
+            String ranger_name = request.queryParams("rangerName");
 
-//        post("/create/animal/new",(request, response) -> {
-//            Map<String,Object> model=new HashMap<String, Object>();
-//            String type=request.queryParams("type");
-//            System.out.println(type);
-//            String health=request.queryParams("health");
-//            System.out.println(health);
-//            String age=request.queryParams("age");
-//            System.out.println(age);
-//            String name=request.queryParams("name");
-//            System.out.println(name);
-//            if(type.equals(EndangeredAnimals.ANIMAL_TYPE)){
-//                EndangeredAnimals endangered=new EndangeredAnimals(name,EndangeredAnimals.ANIMAL_TYPE,health,age);
-//                endangered.save();
-//            }
-//            else {
-//                Animals animal=new Animals(name,Animals.ANIMAL_TYPE);
-//                animal.save();
-//            }
-//
-//            return new ModelAndView(model,"animal-form.hbs");
-//        },new HandlebarsTemplateEngine());
+            try {
+                Sightings sighting = new Sightings(animal_id, location, ranger_name);
+            } catch (IllegalArgumentException exception) {
+                System.out.println("Please enter Ranger name.");
+            }
+            return new ModelAndView(model,"sighting_form.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
     }}
