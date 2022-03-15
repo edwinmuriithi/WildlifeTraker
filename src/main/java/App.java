@@ -28,14 +28,6 @@ public class App {
         },new HandlebarsTemplateEngine());
 
 
-        //RANGERS
-        //navigate to ranger creation form
-        get("/ranger/new",(request, response) -> {
-            Map<String,Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model,"ranger_form.hbs");
-        },new HandlebarsTemplateEngine());
-
-
         //Animals
         //navigate to animal creation form
         get("/animal/new",(request, response) -> {
@@ -64,12 +56,6 @@ public class App {
             return new ModelAndView(model,"animal_view.hbs");
         },new HandlebarsTemplateEngine());
 
-        //View all Sightings
-        get("/view/sightings",(request, response) -> {
-            Map<String,Object> model=new HashMap<String, Object>();
-            model.put("animals",Animal.all());
-            return new ModelAndView(model,"sighting_view.hbs");
-        },new HandlebarsTemplateEngine());
 
         //Endangered Animals
         //navigate to endangered animal creation form
@@ -78,6 +64,8 @@ public class App {
             return new ModelAndView(model,"endangered.hbs");
         },new HandlebarsTemplateEngine());
 
+
+        //Sightings
         //navigate to Sighting form
         get("/sighting/new",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();
