@@ -63,6 +63,5 @@ The application allows the user to:
 
 ## Acknowledgements
 * Technical Mentor
-* GitHub Pages
-* Fellow classmates
+* Heroku Deployment
 * Github
