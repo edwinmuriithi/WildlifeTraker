@@ -42,6 +42,7 @@ public class App {
             Map<String,Object> model = new HashMap<String, Object>();
             return new ModelAndView(model,"animal_form.hbs");
         },new HandlebarsTemplateEngine());
+
         // posting animals form details
         post("/animal/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
@@ -56,13 +57,14 @@ public class App {
             return new ModelAndView(model,"animal_form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //View all animals
         get("/view/animals",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
             model.put("animals",Animal.all());
             return new ModelAndView(model,"animal_view.hbs");
         },new HandlebarsTemplateEngine());
 
-        //Sightings
+        //View all Sightings
         get("/view/sightings",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
             model.put("animals",Animal.all());
@@ -80,6 +82,13 @@ public class App {
         get("/sighting/new",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();
             return new ModelAndView(model,"sighting_form.hbs");
+        },new HandlebarsTemplateEngine());
+
+        //View all Sightings
+        get("/view/sightings",(request, response) -> {
+            Map<String,Object> model=new HashMap<String, Object>();
+            model.put("animals",Animal.all());
+            return new ModelAndView(model,"sighting_view.hbs");
         },new HandlebarsTemplateEngine());
 
 
