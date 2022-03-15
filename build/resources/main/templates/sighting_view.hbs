@@ -32,6 +32,43 @@
 <h2>Wildlife-Tracker Application</h2>
 <p>In nature, nothing is perfect and everything is perfect.</p>
 
+<!--View section-->
+<div class="col-md-12 mb-4 white-text text-center">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+
+            <a href="/sighting/new"><button type="button" class="btn btn-warning">Record Sighting</button></a>
+            <h3 class="hr-light text-monospace stylistsTitle text-warning">All Recorded Sightings:</h3>
+            <div style = "margin-left: 2em;">
+                <h1>Sightings</h1>
+                <hr>
+                <div class ="row">
+                    {{#if sightings}}
+                        {{sightings}}
+
+                        <div class = "col-md-3">
+                            <h3>Animal</h3>
+                            <hr>
+                            {{#each animals as |animal|}}
+                                <h3>{{animal}}</h3>
+                            {{/each}}
+                        </div>
+                        <div class = "col-md-3">
+                            <h3>Time</h3>
+                            <hr>
+                            {{#each sightings as |sighting|}}
+                                <h3>{{sighting.time}}</h3>
+                            {{/each}}
+                        </div>
+                    {{else}}
+
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--View section-->
 
 
 
