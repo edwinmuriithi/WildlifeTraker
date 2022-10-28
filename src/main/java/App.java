@@ -3,6 +3,7 @@ import Models.Endangered;
 import Models.Sightings;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
+import sun.awt.X11.XSystemTrayPeer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,6 +78,7 @@ public class App {
             } catch (IllegalArgumentException exception) {
                 System.out.println("Please enter all input fields.");
             }
+            model.put("animals",Animal.all());
             return new ModelAndView(model,"animal_view.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -100,12 +102,14 @@ public class App {
         //Post Sightings form details
         post("/sighting/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            int animal_id = Integer.parseInt(request.queryParams("animal"));
+            String animal_id = request.queryParams("animal_id");
+            System.out.println(animal_id);
             String location = request.queryParams("location");
             String ranger_name = request.queryParams("rangerName");
 
             try {
-                Sightings sighting = new Sightings(animal_id, location, ranger_name);
+                Sightings sightings = new Sightings(animal_id, location, ranger_name);
+                sightings.save();
             } catch (IllegalArgumentException exception) {
                 System.out.println("Please enter Ranger name.");
             }

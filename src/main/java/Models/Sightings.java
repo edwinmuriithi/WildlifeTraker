@@ -10,14 +10,14 @@ import java.util.List;
 public class Sightings implements DatabaseManagement {
 
     private int id;
-    private int animal_id;
+    private String animal_id;
     private String location;
     private String ranger_name;
     private Timestamp timestamp;
 
     // constructor for sighting which implements abstract method save in Database management class
 
-    public Sightings(int animal_id, String location, String ranger_name) {
+    public Sightings(String animal_id, String location, String ranger_name) {
         if (ranger_name.equals("")) {
             throw new IllegalArgumentException("Please enter Ranger name.");
         }
@@ -32,7 +32,7 @@ public class Sightings implements DatabaseManagement {
         return id;
     }
 
-    public int getAnimalId(){
+    public String getAnimalId(){
         return animal_id;
     }
 
@@ -49,6 +49,10 @@ public class Sightings implements DatabaseManagement {
     }
 
     //set methods for Sightings
+    public void setAnimal_id(String animal_id) {
+        this.animal_id = animal_id;
+    }
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -85,7 +89,7 @@ public class Sightings implements DatabaseManagement {
     }
 
     //Listing sighting by animal id
-    public static List<Sightings> allByAnimal(int animalId) {
+    public static List<Sightings> allByAnimal(String animalId) {
         try(Connection con = Db.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE animal_id = :animalId ORDER BY timestamp DESC";
             return con.createQuery(sql)

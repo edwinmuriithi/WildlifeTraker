@@ -56,8 +56,11 @@
                         <div class = "col-md-3">
                             <h3>Time</h3>
                             <hr>
-                            {{#each sightings as |sighting|}}
-                                <h3>{{sighting.time}}</h3>
+                            {{#each sightings as |sightings|}}
+                                <h3>{{sightings.animal_id}}</h3>
+                                <h3>{{sightings.location}}</h3>
+                                <h3>{{sightings.ranger_name}}</h3>
+                                <h3>{{sightings.time}}</h3>
                             {{/each}}
                         </div>
                     {{else}}

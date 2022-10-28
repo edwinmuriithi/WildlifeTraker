@@ -1,0 +1,3 @@
+[submodule "tourist"]
+	path = tourist
+	url = https://github.com/edwinmuriithi/WildlifeTraker.git/
